@@ -7,6 +7,9 @@ class M04_Masterpiece:
     def __init__(self, myRobot):
         self.__myRobot = myRobot
 
+    def name(self):
+        return "M04: Masterpiece"
+
     def go(self):
         self.__myRobot.drive(speed=100, distance=100)
         self.__myRobot.waitUntilFinishedDriving()

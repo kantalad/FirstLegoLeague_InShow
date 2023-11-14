@@ -7,6 +7,9 @@ class M14_AudienceDelivery:
     def __init__(self, myRobot):
         self.__myRobot = myRobot
 
+    def name(self):
+        return "M14: Audience Delivery"
+
     def go(self):
         self.__myRobot.driveUntilBump()
         self.__myRobot.waitUntilFinishedDriving()

@@ -7,6 +7,9 @@ class M12_VRArtist:
     def __init__(self, myRobot):
         self.__myRobot = myRobot
 
+    def name(self):
+        return "M12: VR Artist"
+
     def go(self):
         self.__myRobot.driveUntilBump()
         self.__myRobot.waitUntilFinishedDriving()

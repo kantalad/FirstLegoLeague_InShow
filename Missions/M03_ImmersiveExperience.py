@@ -7,6 +7,9 @@ class M03_ImmersiveExperience:
     def __init__(self, myRobot):
         self.__myRobot = myRobot
 
+    def name(self):
+        return "M03: Immersive Experience"
+
     def go(self):
         self.__myRobot.driveUntilBump()
         self.__myRobot.waitUntilFinishedDriving()

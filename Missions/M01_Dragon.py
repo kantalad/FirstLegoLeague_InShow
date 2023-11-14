@@ -7,6 +7,9 @@ class M01_Dragon:
     def __init__(self, myRobot):
         self.__myRobot = myRobot
 
+    def name(self):
+        return "M01: Dragon"
+
     def go(self):
 
         self.__myRobot.driveUntilBump()

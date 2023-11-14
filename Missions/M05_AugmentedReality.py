@@ -7,6 +7,9 @@ class M05_AugmentedReality:
     def __init__(self, myRobot):
         self.__myRobot = myRobot
 
+    def name(self):
+        return "M05: Augmented Reality"
+
     def go(self):
         self.__myRobot.driveUntilBump()
         self.__myRobot.waitUntilFinishedDriving()

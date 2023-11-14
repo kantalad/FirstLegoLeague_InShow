@@ -7,6 +7,9 @@ class M06_MusicConcertLS:
     def __init__(self, myRobot):
         self.__myRobot = myRobot
 
+    def name(self):
+        return "M06: Music Concert LS"
+
     def go(self):
         self.__myRobot.driveUntilBump()
         self.__myRobot.waitUntilFinishedDriving()
