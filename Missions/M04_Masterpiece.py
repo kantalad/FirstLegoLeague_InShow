@@ -1,21 +1,19 @@
 #!/usr/bin/env pybricks-micropython
 
-class M04_Masterpiece:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M04_Masterpiece(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M04: Masterpiece"
+    def __go(self):
 
-    def go(self):
-        self.__myRobot.drive(speed=100, distance=100)
-        self.__myRobot.waitUntilFinishedDriving()
+        self.myRobot.drive(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()
 
-        self.__myRobot.frontUntilStalled(speed=-360)
-        self.__myRobot.frontUntilTarget(target_angle=0, wait=True)
+        self.myRobot.frontUntilStalled(speed=-360)
+        self.myRobot.frontUntilTarget(target_angle=0, wait=True)
 
-        self.__myRobot.driveBackwards(speed=100, distance=100)
-        self.__myRobot.waitUntilFinishedDriving()
+        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()

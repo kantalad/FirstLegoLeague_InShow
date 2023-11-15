@@ -1,16 +1,19 @@
 #!/usr/bin/env pybricks-micropython
 
-class M06_MusicConcertLS:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M06_MusicConcertLS(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M06: Music Concert LS"
+    def __go(self):
 
-    def go(self):
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()
+
+        self.myRobot.frontUntilTarget(target_angle=0, wait=True)
+
+        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()
 

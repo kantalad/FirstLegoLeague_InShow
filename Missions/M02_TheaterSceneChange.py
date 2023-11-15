@@ -1,16 +1,22 @@
 #!/usr/bin/env pybricks-micropython
 
-class M02_TheaterSceneChange:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M02_TheaterSceneChange(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M02: Theater Scene Change"
+    def __go(self):
+        
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()
 
-    def go(self):
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
+        for x in range(1, 3):
+            self.myRobot.frontUntilStalled(speed=-360)
+            self.myRobot.frontUntilTarget(target_angle=0, wait=True)
+
+        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()
+
 

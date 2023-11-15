@@ -1,16 +1,16 @@
 #!/usr/bin/env pybricks-micropython
 
-class M10_SoundMixer:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M10_SoundMixer(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M10: Sound Mixer"
+    def __go(self):
 
-    def go(self):
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()
 
+        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()

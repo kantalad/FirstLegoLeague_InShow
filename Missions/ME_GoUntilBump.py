@@ -2,13 +2,12 @@
 
 from Modules.MenuItem import MenuItem
 
-class M14_AudienceDelivery(MenuItem):
+class ME_GoUntilBump(MenuItem):
 
     def __init__(self, myRobot):
         super().__init__(myRobot=myRobot)
 
     def __go(self):
-        pass
-
-        #self.myRobot.driveUntilBump()
-        #self.myRobot.waitUntilFinishedDriving()
+        
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()

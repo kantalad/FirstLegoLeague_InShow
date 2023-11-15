@@ -2,18 +2,15 @@
 
 from Modules.MenuItem import MenuItem
 
-class M03_ImmersiveExperience(MenuItem):
+class ME_DriveComeBack(MenuItem):
 
     def __init__(self, myRobot):
         super().__init__(myRobot=myRobot)
 
     def __go(self):
-
-        self.myRobot.driveUntilBump()
+        
+        self.myRobot.drive(distance=1000)
         self.myRobot.waitUntilFinishedDriving()
 
-        self.myRobot.frontUntilStalled(speed=-360)
-        self.myRobot.frontUntilTarget(target_angle=0, wait=True)
-
-        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.driveBackwards(distance=1000)
         self.myRobot.waitUntilFinishedDriving()

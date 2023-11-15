@@ -1,23 +1,19 @@
 #!/usr/bin/env pybricks-micropython
 
-class M01_Dragon:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M01_Dragon(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M01: Dragon"
+    def __go(self):
 
-    def go(self):
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()
 
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
+        self.myRobot.turn(angle=90, gyro=False)
+        self.myRobot.waitUntilFinishedDriving()
 
-        self.__myRobot.turn(angle=90)
-        self.__myRobot.waitUntilFinishedDriving()
-
-        self.__myRobot.driveBackwards(speed=100, distance=100)
-        self.__myRobot.waitUntilFinishedDriving()
-
+        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()

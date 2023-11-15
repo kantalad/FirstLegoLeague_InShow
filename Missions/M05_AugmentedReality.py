@@ -1,16 +1,13 @@
 #!/usr/bin/env pybricks-micropython
 
-class M05_AugmentedReality:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M05_AugmentedReality(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M05: Augmented Reality"
+    def __go(self):
 
-    def go(self):
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
-
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()

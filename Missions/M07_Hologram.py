@@ -1,16 +1,13 @@
 #!/usr/bin/env pybricks-micropython
 
-class M07_Hologram:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M07_Hologram(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M07: Hologram"
+    def __go(self):
 
-    def go(self):
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
-
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()

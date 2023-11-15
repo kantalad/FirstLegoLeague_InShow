@@ -10,11 +10,9 @@ class MyRobot:
     # Default speed for the robot
     __defaultSpeed__ = 150
 
-    # Whether the robot is driving
-    __IsDriving = False
-
     def __init__(self):
-        pass
+        # Whether the robot is driving
+        self.isDriving = False
 
     def driveUntilBump(self, speed=__defaultSpeed__):
         t1 = Thread(target=self.__driveUntilBumpThread, args=(speed,))
@@ -22,11 +20,11 @@ class MyRobot:
         wait(10)
 
     def __driveUntilBumpThread(self, speed=__defaultSpeed__):
-        self.__IsDriving = True
+        self.isDriving = True
         print("drive unitl bump started")
         wait(2000)
         print("drive unitl bump finished")
-        self.__IsDriving = False
+        self.isDriving = False
 
 
     def drive(self, distance=0, speed=__defaultSpeed__):
@@ -40,24 +38,24 @@ class MyRobot:
         wait(10)
 
     def __driveThread(self, distance=0, speed=__defaultSpeed__):
-        self.__IsDriving = True
+        self.isDriving = True
         print("drive started, speed: ", speed)
         wait(distance*10)
         print("drive finished, speed:", speed)
-        self.__IsDriving = False
+        self.isDriving = False
 
 
-    def turn(self, angle=0):
-        t1 = Thread(target=self.__turnThread, args=(0, angle))
+    def turn(self, angle=0, gyro=True):
+        t1 = Thread(target=self.__turnThread, args=(0, angle, gyro))
         t1.start()
         wait(10)
 
-    def __turnThread(self, speed=0, angle=0):
-        self.__IsDriving = True
+    def __turnThread(self, speed=0, angle=0, gyro=True):
+        self.isDriving = True
         print("turn started")
         wait(angle*10)
         print("turn finished")
-        self.__IsDriving = False
+        self.isDriving = False
 
 
     def followLine(self, speed=__defaultSpeed__):
@@ -66,11 +64,11 @@ class MyRobot:
          wait(10)
 
     def __followLine(self, speed=__defaultSpeed__):
-        self.__IsDriving = True
+        self.isDriving = True
         print("follow line started")
         wait(2000)
         print("follow line ended")
-        self.__IsDriving = False
+        self.isDriving = False
 
 
     def findLine(self, speed=__defaultSpeed__):
@@ -79,11 +77,11 @@ class MyRobot:
          wait(10)
 
     def __findLine(self, speed=__defaultSpeed__):
-        self.__IsDriving = True
+        self.isDriving = True
         print("find line started")
         wait(2000)
         print("fine line finished")
-        self.__IsDriving = False
+        self.isDriving = False
 
 
     def frontUntilTarget(self, speed=__defaultSpeed__, target_angle=0, then=Stop.HOLD, wait=False):
@@ -123,6 +121,6 @@ class MyRobot:
 
     def waitUntilFinishedDriving(self):
         print("waiting until finished driving started")
-        while self.__IsDriving:
+        while self.isDriving:
             wait(10)
         print("waiting until finished driving finished")

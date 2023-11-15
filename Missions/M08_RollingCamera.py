@@ -1,16 +1,28 @@
 #!/usr/bin/env pybricks-micropython
 
-class M08_RollingCamera:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M08_RollingCamera(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M08: Rolling Camera"
+    def __go(self):
 
-    def go(self):
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()
 
+        self.myRobot.frontUntilStalled(speed=360)
+        self.myRobot.frontUntilStalled(speed=-360)
+
+        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()
+
+        self.myRobot.turn(angle=-45)
+        self.myRobot.waitUntilFinishedDriving()
+
+        self.myRobot.drive(distance=100)
+        self.myRobot.waitUntilFinishedDriving()
+
+        self.myRobot.driveBackwards(speed=100, distance=100)
+        self.myRobot.waitUntilFinishedDriving()

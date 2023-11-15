@@ -1,16 +1,14 @@
 #!/usr/bin/env pybricks-micropython
 
-class M15_ExpertDelivery:
+from Modules.MenuItem import MenuItem
 
-    __myRobot = None
+class M15_ExpertDelivery(MenuItem):
 
     def __init__(self, myRobot):
-        self.__myRobot = myRobot
+        super().__init__(myRobot=myRobot)
 
-    def name(self):
-        return "M15: Expert Delivery"
+    def __go(self):
+        pass
 
-    def go(self):
-        self.__myRobot.driveUntilBump()
-        self.__myRobot.waitUntilFinishedDriving()
-
+        #self.myRobot.driveUntilBump()
+        #self.myRobot.waitUntilFinishedDriving()
