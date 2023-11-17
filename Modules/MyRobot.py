@@ -40,12 +40,12 @@ class MyRobot:
         self.isDriving = False
 
         # Initialize the drive base.
-        self.driveBase = DriveBase(left_motor=__leftMotor, right_motor=__rightMotor, wheel_diameter=100.00, axle_track=90)
-        self.driveBase.settings(straight_speed=self.__defaultSpeed__, straight_acceleration=self.__defaultSpeed__, turn_rate=0, turn_acceleration=self.__defaultSpeed__)
+        self.driveBase = DriveBase(left_motor=self.leftMotor, right_motor=self.rightMotor, wheel_diameter=100.00, axle_track=90)
+        self.driveBase.settings(straight_speed=self.__defaultSpeed__, straight_acceleration=self.__defaultSpeed__, turn_rate=self.__defaultSpeed__, turn_acceleration=self.__defaultSpeed__)
 
 
     def driveUntilBump(self, speed=__defaultSpeed__):
-        t1 = Thread(target=self.driveUntilBumpThread, args=(speed,))
+        t1 = Thread(target=self.__driveUntilBumpThread, args=(speed,))
         t1.start()
         wait(10)
 
@@ -64,12 +64,12 @@ class MyRobot:
 
 
     def drive(self, distance=0, speed=__defaultSpeed__):
-         t1 = Thread(target=self.driveThread, args=(distance, speed))
+         t1 = Thread(target=self.__driveThread, args=(distance, speed))
          t1.start()
          wait(10)
 
     def driveBackwards(self, distance=0, speed=__defaultSpeed__):
-         t1 = Thread(target=self.driveThread, args=(distance, (-1*speed)))
+         t1 = Thread(target=self.__driveThread, args=(distance, (-1*speed)))
          t1.start()
          wait(10)
 
@@ -88,7 +88,7 @@ class MyRobot:
 
 
     def turn(self, angle=0, gyro=True):
-        t1 = Thread(target=self.turnThread, args=(0, angle, gyro))
+        t1 = Thread(target=self.__turnThread, args=(0, angle, gyro))
         t1.start()
         wait(10)
 
@@ -114,7 +114,7 @@ class MyRobot:
 
 
     def followLine(self, speed=__defaultSpeed__):
-         t1 = Thread(target=self.followLine, args=(speed,))
+         t1 = Thread(target=self.__followLine, args=(speed,))
          t1.start()
          wait(10)
 
@@ -157,7 +157,7 @@ class MyRobot:
 
 
     def findLine(self, speed=__defaultSpeed__):
-         t1 = Thread(target=self.findLine, args=(speed, ))
+         t1 = Thread(target=self.__findLine, args=(speed, ))
          t1.start()
          wait(10)
 
