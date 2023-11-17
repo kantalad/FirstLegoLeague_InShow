@@ -183,30 +183,6 @@ class MyRobot:
         self.driveBase.stop()
         self.isDriving = False
 
-    """
-    def __findLine(self, speed=__defaultSpeed__):
-        self.isDriving = True
-        self.driveBase.reset()
-        self.gyroSensor.reset_angle(angle=0)
-
-        while True:
-            lReflection = self.leftColorSensor.reflection()
-            rReflection = self.rightColorSensor.reflection()
-            print("threshold, ", self.threshold, " lReflection: ", lReflection, " rReflection: ", rReflection)
-
-            # If both found white, keep going
-            if(lReflection < self.threshold) or (rReflection < self.threshold):
-                print("someone found black, stop")
-                break
-
-            print("both found white, go straight")
-            correction = 3 * self.gyroSensor.angle() * -1
-            self.driveBase.drive(speed=speed, turn_rate=correction)
-
-        self.driveBase.stop()
-        self.isDriving = False
-    """
-
     def frontUntilTarget(self, speed=__defaultSpeed__, target_angle=0, then=Stop.HOLD, wait=False):
         self.frontMotor.run_target(speed=speed, target_angle=target_angle, then=then, wait=wait)
 
