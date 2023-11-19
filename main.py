@@ -18,6 +18,9 @@ from Missions.ME_GoUntilBumpComeBack import ME_GoUntilBumpComeBack
 from Missions.ME_Drive import ME_Drive
 from Missions.ME_DriveComeBack import ME_DriveComeBack
 
+from Missions.TESTING import TESTING
+
+
 # Initialze brick
 ev3 = EV3Brick()
 
@@ -26,6 +29,7 @@ myRobot = MyRobot()
 
 # Initialize and start menu system
 menuSystem = MenuSystem(ev3=ev3)
+menuSystem.addItem(TESTING(myRobot))
 menuSystem.addItem(MovieSet(myRobot))
 menuSystem.addItem(SoundMixer(myRobot))
 menuSystem.addItem(Dragon(myRobot))

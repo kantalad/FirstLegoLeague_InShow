@@ -17,9 +17,8 @@ class MyRobot:
     def __init__(self):
 
         # Calculate the light threshold. Choose values based on your measurements.
-        self.black = 9
-        self.white = 85
-        self.threshold = self.black + 10
+        self.black = Color.BLACK
+        self.white = Color.WHITE
 
         # how much the robot should steer to stay on the line
         self.PROPORTIONAL_GAIN = 4
@@ -124,32 +123,30 @@ class MyRobot:
 
         while True:
             deviation = 0
-            lReflection = self.leftColorSensor.reflection()
-            rReflection = self.rightColorSensor.reflection()
-            print("threshold, ", self.threshold, " lReflection: ", lReflection, " rReflection: ", rReflection)
+            lColor = self.leftColorSensor.color()
+            rColor = self.rightColorSensor.color()
+            print("lColor: ", lColor, " rColor: ", rColor)
 
             # If both found black, stop
-            if(lReflection <= self.threshold) and (rReflection <= self.threshold):
+            if(lColor == Color.BLACK) and (rColor == Color.BLACK):
                 print("both found black")
                 break
 
-            # If both found white, keep going
-            if(self.threshold < lReflection) and (self.threshold < rReflection):
+            # If both found not black, keep going
+            if(lColor != Color.BLACK) and (rColor != Color.BLACK):
                 print("both found white, go straight")
                 self.driveBase.drive(speed=speed, turn_rate=0)
 
             # if left on black, turn left a little
-            if lReflection <= self.threshold:
-                deviation = lReflection - self.threshold
-                correction = self.PROPORTIONAL_GAIN * deviation
-                print("left on black, turn left a little. deviation: ", deviation, " correction: ", correction)
+            if lColor == Color.BLACK:
+                correction = self.PROPORTIONAL_GAIN * 20 * -1
+                print("left on black, turn left a little. correction: ", correction)
                 self.driveBase.drive(speed=speed, turn_rate=correction)
 
             # if left on black, turn right a little
-            if rReflection <= self.threshold:
-                deviation = rReflection - self.threshold
-                correction = self.PROPORTIONAL_GAIN * deviation * -1
-                print("right on black, turn right a little. deviation:", deviation, " correction: ", correction)
+            if rColor == Color.BLACK:
+                correction = self.PROPORTIONAL_GAIN * 20
+                print("right on black, turn right a little. correction: ", correction)
                 self.driveBase.drive(speed=speed, turn_rate=correction)
 
         self.driveBase.stop()
@@ -167,12 +164,12 @@ class MyRobot:
         self.gyroSensor.reset_angle(angle=0)
 
         while True:
-            lReflection = self.leftColorSensor.reflection()
-            rReflection = self.rightColorSensor.reflection()
-            print("threshold, ", self.threshold, " lReflection: ", lReflection, " rReflection: ", rReflection)
+            lColor = self.leftColorSensor.color()
+            rColor = self.rightColorSensor.color()
+            print("lColor: ", lColor, " rColor: ", rColor)
 
             # If both found white, keep going
-            if(lReflection <= self.threshold) or (rReflection <= self.threshold):
+            if(lColor == Color.BLACK) or (rColor == Color.BLACK):
                 print("someone found black, stop")
                 break
 
