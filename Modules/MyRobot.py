@@ -153,12 +153,12 @@ class MyRobot:
         self.isDriving = False
 
 
-    def findLine(self, speed=__defaultSpeed__):
-         t1 = Thread(target=self.__findLine, args=(speed, ))
+    def findLine(self, speed=__defaultSpeed__, color=Color.BLACK):
+         t1 = Thread(target=self.__findLine, args=(speed, color))
          t1.start()
          wait(10)
 
-    def __findLine(self, speed=__defaultSpeed__):
+    def __findLine(self, speed=__defaultSpeed__, color=Color.BLACK):
         self.isDriving = True
         self.driveBase.reset()
         self.gyroSensor.reset_angle(angle=0)
@@ -169,11 +169,11 @@ class MyRobot:
             print("lColor: ", lColor, " rColor: ", rColor)
 
             # If both found white, keep going
-            if(lColor == Color.BLACK) or (rColor == Color.BLACK):
-                print("someone found black, stop")
+            if(lColor == color) or (rColor == color):
+                print("someone found the color, stop")
                 break
 
-            print("both found white, go straight")
+            print("both found another color, go straight")
             correction = 3 * self.gyroSensor.angle() * -1
             self.driveBase.drive(speed=speed, turn_rate=correction)
 

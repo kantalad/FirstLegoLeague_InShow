@@ -1,5 +1,7 @@
 #!/usr/bin/env pybricks-micropython
 
+from pybricks.parameters import Color
+
 from Modules.MenuItem import MenuItem
 
 class TESTING(MenuItem):
@@ -10,9 +12,10 @@ class TESTING(MenuItem):
     def __go(self):
         
 
-        self.myRobot.findLine()
+        self.myRobot.findLine(color=Color.BLACK)
         self.myRobot.waitUntilFinishedDriving()
 
+        """
         self.myRobot.turn(angle=-15)
         self.myRobot.waitUntilFinishedDriving()
         
@@ -21,4 +24,4 @@ class TESTING(MenuItem):
 
         self.myRobot.followLine()
         self.myRobot.waitUntilFinishedDriving()
-
+        """
