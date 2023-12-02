@@ -11,8 +11,7 @@ class Dragon(MenuItem):
 
     def __go(self):
 
-        self.myRobot.drive(distance=15)
-        self.myRobot.waitUntilFinishedDriving()
+        self.myRobot.frontUntilStalled(speed=360, duty_limit=30)
 
         self.myRobot.turn(angle=-15)
         self.myRobot.waitUntilFinishedDriving()
@@ -21,6 +20,8 @@ class Dragon(MenuItem):
         self.myRobot.waitUntilFinishedDriving()
 
         self.m01.go()
+
+        self.myRobot.frontStop()
 
         self.myRobot.driveBackwards(speed=250, distance=400)
         self.myRobot.waitUntilFinishedDriving()

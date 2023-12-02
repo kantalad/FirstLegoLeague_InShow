@@ -12,8 +12,23 @@ class TESTING(MenuItem):
     def __go(self):
         
 
+        #frontUntilTarget(self, speed=__defaultSpeed__, target_angle=0, then=Stop.HOLD, wait=False)
+
+        #self.myRobot.frontUntilStalled(speed=-100)
+        #self.myRobot.frontUntilStalled(speed=100)
+
+        self.myRobot.turn(angle=90)
+        self.myRobot.waitUntilFinishedDriving()
+
+        self.myRobot.driveUntilBump()
+        self.myRobot.waitUntilFinishedDriving()
+
+
+
+        """
         self.myRobot.findLine(color=Color.BLACK)
         self.myRobot.waitUntilFinishedDriving()
+        """
 
         """
         self.myRobot.turn(angle=-15)
