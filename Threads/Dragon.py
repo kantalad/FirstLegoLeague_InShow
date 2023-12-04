@@ -13,7 +13,7 @@ class Dragon(MenuItem):
 
         self.myRobot.frontUntilStalled(speed=360, duty_limit=30)
 
-        self.myRobot.turn(angle=-15)
+        self.myRobot.turn(angle=-10)
         self.myRobot.waitUntilFinishedDriving()
 
         self.myRobot.driveUntilBump()

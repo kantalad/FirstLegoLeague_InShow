@@ -16,19 +16,18 @@ class TESTING(MenuItem):
 
         #self.myRobot.frontUntilStalled(speed=-100)
         #self.myRobot.frontUntilStalled(speed=100)
-
+        """
         self.myRobot.turn(angle=90)
         self.myRobot.waitUntilFinishedDriving()
-
+        """    
         self.myRobot.driveUntilBump()
         self.myRobot.waitUntilFinishedDriving()
 
 
 
-        """
         self.myRobot.findLine(color=Color.BLACK)
         self.myRobot.waitUntilFinishedDriving()
-        """
+        
 
         """
         self.myRobot.turn(angle=-15)

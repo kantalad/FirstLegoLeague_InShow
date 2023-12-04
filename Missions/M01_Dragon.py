@@ -9,7 +9,13 @@ class M01_Dragon(MenuItem):
 
     def __go(self):
 
-        self.myRobot.turn(angle=90, gyro=False)
+        #self.myRobot.frontUntilStalled(speed=360, duty_limit=30)
+        self.myRobot.frontUntilTarget(speed=50, target_angle=0)
+
+        self.myRobot.driveBackwards(speed=100, distance=40)
+        self.myRobot.waitUntilFinishedDriving()
+
+        self.myRobot.turn(angle=100, gyro=False)
         self.myRobot.waitUntilFinishedDriving()
 
         self.myRobot.driveBackwards(speed=100, distance=10)

@@ -12,3 +12,5 @@ class RollingCamera(MenuItem):
     def __go(self):
         self.m08.go()
 
+        self.myRobot.driveBackwards(speed=100, distance=400)
+        self.myRobot.waitUntilFinishedDriving()
