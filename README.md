@@ -1,7 +1,7 @@
 
 # LEGO First League Micropython
 
-Welcome to the exciting world of LEGO First League programming! This file will guide you through using Micropython on your EV3 to control your robot and conquer the missions for this year's challenge.
+Welcome to the exciting world of LEGO First League programming! This project will guide you through using Micropython on your EV3 to control your robot and conquer the missions for this year's challenge.
 
 Learn more about LEGO FFL here:  https://www.firstinspires.org/robotics/fll
 
